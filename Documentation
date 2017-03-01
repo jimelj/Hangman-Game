@@ -1,0 +1,28 @@
+Outline - Hangman Game
+
+Press any key to get started
+
+Word array[] - Holds all words for the game
+
+* Word Display
+  -Display each letter (word.length) on screen with underline for each char.
+  -Reveal letter when user selects
+
+*Record the number of guesses remaining
+
+*Wins: (# of times the user has guessed the letter correctly)
+
+*Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+
+*Letter display area for incorrect letters guessed
+  - # of guesses are not lowered when the same letter has been guessed
+
+* when user wins, display a "correct!" word or image
+
+*After win select another word
+
+*After loss, reset game
+
+*Style game
+
+*play a sound when the "correct!" word/image is displayed *BONUS*
