@@ -124,12 +124,12 @@ if (randomWord.indexOf(letterGuess) === -1) {
     wordsArr.push(letterGuess);
     losses--;
     console.log("losses:", losses);
-}else{
-  wins++
 }
 if(losses === 0){
   randomWord = words[Math.floor(Math.random()*words.length)];
   losses = 15;
+  wordsArr = [];
+
 }
 
 
@@ -138,7 +138,7 @@ console.log("array", wordsArr);
 
 var inj = "<p>Wins: " + wins + "</p>" +
 "<p>Current Word: " + randomWord + "</p>" +
-"<p>Numbers of Guesses Remainig: " + losses + "</p>"
+ "<p>Numbers of Guesses Remainig: " + losses + "</p>" +
 "<p>Letters Already Guessed: " + wordsArr.join(", ")  + "</p>" ;
 // <h2>Wins</h2>
 // <h2>Current Word</h2>
@@ -148,3 +148,10 @@ var inj = "<p>Wins: " + wins + "</p>" +
 
 document.querySelector('#game').innerHTML = inj;
 }
+
+
+
+//FOR LATER TO REVIEW
+// for (var i = 0, len = str.length; i < len; i++) {
+//   alert(str[i]);
+// }
