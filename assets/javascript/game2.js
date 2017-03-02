@@ -1,7 +1,3 @@
-var wins = "0";
-var losses = 15;
-var guessed = "0";
-var letterGuess = 0;
 var words = [  "walk",
   "square",
   "chop",
@@ -103,50 +99,62 @@ var words = [  "walk",
   "hunt",
   "colorful"
 ];
-var wordsArr =[];
-var wordsHitArr = [];
+var randomWord;
+var wins=0;
+var letterGuess;
+var playsLeft =15;
+var mainWord= [];
+var bWord= [];
+
+
+console.log("hello world");
+
+
+function startGame () {
+   randomWord = words[Math.floor(Math.random()*words.length)];
+   console.log("Random word", randomWord, "I am inside startGame");
+   var wordlength = randomWord.length;
+   console.log("word length:", wordlength);
+   playsLeft = 15;
+
+   
 
 
 
-var randomWord = words[Math.floor(Math.random()*words.length)];
 
-document.onkeyup = function () {
-
-  console.log(randomWord);
-var letterGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-console.log("Letter choice :", letterGuess);
-
-
-
-console.log("indexof",randomWord.indexOf(letterGuess));
-
-if (randomWord.indexOf(letterGuess) === -1) {
-    wordsArr.push(letterGuess);
-    losses--;
-    console.log("losses:", losses);
-}
-
-if(randomWord.indexOf(letterGuess) > -1){
-   wordsHitArr.push(letterGuess);
-   console.log("hits", wordsHitArr , "hi");
-}
-
-if(losses === 0){
-  randomWord = words[Math.floor(Math.random()*words.length)];
-  losses = 15;
-  wordsArr = [];
 
 }
 
 
+startGame();
 
-console.log("array", wordsArr);
+document.onkeyup = function() {
+   letterGuess = String.fromCharCode(event.keyCode).toLowerCase();
+   console.log(letterGuess);
+   mainWord = randomWord.split("");
+   console.log(mainWord);
+
+if (mainWord.indexOf(letterGuess) === -1){
+  playsLeft--;
+  bWord.push(letterGuess);
+  console.log("array of missed letters",bWord);
+  console.log("playsleft",playsLeft);
+}else {
+
+}
+
+
+
+if (playsLeft === 0) {
+  playsLeft = 15;
+  bWord = [];
+  startGame();
+}
 
 var inj = "<p>Wins: " + wins + "</p>" +
 "<p>Current Word: " + randomWord + "</p>" +
- "<p>Numbers of Guesses Remainig: " + losses + "</p>" +
-"<p>Letters Already Guessed: " + wordsArr.join(", ")  + "</p>" ;
+ "<p>Numbers of Guesses Remainig: " + playsLeft + "</p>" +
+"<p>Letters Already Guessed: " + bWord.join(", ")  + "</p>" ;
 // <h2>Wins</h2>
 // <h2>Current Word</h2>
 // <h2>Numbers of guesses Remaining</h2>
@@ -154,11 +162,6 @@ var inj = "<p>Wins: " + wins + "</p>" +
 
 
 document.querySelector('#game').innerHTML = inj;
+
+console.log(bWord, "THE END");
 }
-
-
-
-//FOR LATER TO REVIEW
-// for (var i = 0, len = str.length; i < len; i++) {
-//   alert(str[i]);
-// }
